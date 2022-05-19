@@ -20,9 +20,39 @@ Se realizaron dos archivos de código, uno para el arduino maestro, el cual envi
 ## Arduino Maestro
 
 ```
-$(function(){
-  $(document).verbatim();
-});
+#include <Wire.h>
+const int ledPIN = 13;
+
+void setup()
+{
+ //by default A5 is the Serial Clock (SCL) 
+//and the serial data(SDA) is A4
+  pinMode(ledPIN , OUTPUT);
+  Wire.begin();        // join i2c bus-para el máster no es obligatorio el  id
+  Serial.begin(9600);  // start serial for output
+}
+
+void loop()
+{
+  Wire.requestFrom(2, 6);    // request 6 bytes arduino escavo con id #2
+  String txtTemp="";
+  while(Wire.available())   
+  {
+    char tmpChar = Wire.read(); // receive a byte as character, could be less bytes than requested
+    txtTemp+=tmpChar;
+  }
+  float tempCelsius=txtTemp.toFloat();
+   Serial.println(txtTemp);
+  Serial.println(tempCelsius);
+  if(tempCelsius>30){
+  digitalWrite(ledPIN , HIGH);  
+  }
+  else {
+    digitalWrite(ledPIN , LOW); 
+  }
+  delay(500);
+}
+
 ```
 
 ## Arduino Esclavo
