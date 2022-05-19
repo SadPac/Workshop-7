@@ -10,7 +10,7 @@
 # Diagrama de Actividades
 
 <p align="center">
-  <img src="[https://raw.githubusercontent.com/SadPac/Workshop-6/main/img/getmessage.png](https://raw.githubusercontent.com/SadPac/Workshop-7/main/img/Diagrama%20de%20actividades.png)">
+  <img src="https://raw.githubusercontent.com/SadPac/Workshop-7/main/img/Diagrama%20de%20actividades.png">
 </p>
 
 # Documentación de Código
